@@ -34,7 +34,37 @@ body {
   display: grid;
   place-items: center;
   overflow: hidden;
-  cursor: pointer;
+  cursor: none;
+}
+
+.cursor-kaomoji {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 2px solid rgba(249, 115, 22, 0.6);
+  background: radial-gradient(circle at 30% 30%, rgba(249, 115, 22, 0.3), transparent 65%);
+  box-shadow: 0 0 18px rgba(249, 115, 22, 0.4);
+  transform: translate3d(-9999px, -9999px, 0);
+  pointer-events: none;
+  transition: opacity 160ms ease;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.cursor-kaomoji::after {
+  content: '☆';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -52%);
+  font-size: 15px;
+  color: rgba(249, 115, 22, 0.8);
+  pointer-events: none;
+}
+
+.cursor-kaomoji.is-visible {
+  opacity: 1;
 }
 
 .hero {
