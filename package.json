@@ -1,0 +1,23 @@
+{
+  "name": "electron-vibe-kaomoji",
+  "version": "1.0.0",
+  "description": "Electron showcase that drops random kaomoji whenever you click the window.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"./tests/**/*.js\"",
+    "package": "electron-packager . KaomojiDrop --platform=darwin --arch=arm64 --out=dist --overwrite --prune=true"
+  },
+  "keywords": [
+    "electron",
+    "kaomoji",
+    "animation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron/packager": "^18.3.2",
+    "electron": "^32.1.2"
+  }
+}

@@ -1,0 +1,124 @@
+:root {
+  color-scheme: light dark;
+  --bg-light: linear-gradient(160deg, #f9f0ff 0%, #fff4e6 30%, #e0f7ff 100%);
+  --bg-dark: linear-gradient(160deg, #0f172a 0%, #1e1b4b 40%, #312e81 100%);
+  --card-bg-light: rgba(255, 255, 255, 0.75);
+  --card-bg-dark: rgba(24, 24, 48, 0.75);
+  --text-light: #1e1b4b;
+  --text-dark: #f8fafc;
+  --accent: #f97316;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg-light);
+  color: var(--text-light);
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+#stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem 3rem;
+  border-radius: 2rem;
+  backdrop-filter: blur(18px) saturate(150%);
+  background-color: var(--card-bg-light);
+  box-shadow: 0 40px 100px rgba(15, 23, 42, 0.15);
+  transition: transform 200ms ease;
+}
+
+.hero:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background-color: var(--card-bg-dark);
+    box-shadow: 0 30px 80px rgba(8, 12, 32, 0.4);
+  }
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero p {
+  margin: 0.75rem 0 0;
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+.hint {
+  font-size: 0.95rem;
+  opacity: 0.6;
+}
+
+.kaomoji {
+  position: absolute;
+  font-size: clamp(1.25rem, 4vw, 3.25rem);
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: screen;
+  text-shadow: 0 8px 30px rgba(15, 23, 42, 0.35);
+  animation: floatDown linear forwards;
+}
+
+.kaomoji.calm {
+  mix-blend-mode: normal;
+  text-shadow: 0 4px 16px rgba(15, 23, 42, 0.25);
+  animation-name: floatDownCalm;
+}
+
+@keyframes floatDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--start-x), -20vh, 0) rotate(var(--start-rot));
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    transform: translate3d(var(--mid-x), 40vh, 0) rotate(var(--mid-rot));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--end-x), 120vh, 0) rotate(var(--end-rot));
+  }
+}
+
+@keyframes floatDownCalm {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--start-x), -10vh, 0);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--end-x), 80vh, 0);
+  }
+}
